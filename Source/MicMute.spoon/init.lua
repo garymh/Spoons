@@ -1,4 +1,5 @@
 --- === MicMute ===
+--- Customized by Gary Holtz
 ---
 --- Microphone Mute Toggle and status indicator
 ---
@@ -8,21 +9,21 @@ local obj={}
 obj.__index = obj
 
 -- Metadata
-obj.name = "MicMute"
+obj.name = "MicMute*"
 obj.version = "1.0"
-obj.author = "dctucker <dctucker@github.com>"
+obj.author = "dctucker <dctucker@github.com> (modified by Gary Holtz)"
 obj.homepage = "https://dctucker.com"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 
-function obj:updateMicMute(muted)
-	if muted == -1 then
-		muted = hs.audiodevice.defaultInputDevice():muted()
-	end
-	if muted then
-		obj.mute_menu:setTitle("📵 Muted")
-	else
-		obj.mute_menu:setTitle("🎙 On")
-	end
+function updateMicMute(muted)
+  if muted == -1 then
+    muted = hs.audiodevice.defaultInputDevice():muted()
+  end
+  if muted then
+    mute_menu:setTitle("📵 Muted")
+  else
+    mute_menu:setTitle("")
+  end
 end
 
 --- MicMute:toggleMicMute()
@@ -30,30 +31,36 @@ end
 --- Toggle mic mute on/off
 ---
 function obj:toggleMicMute()
-	local mic = hs.audiodevice.defaultInputDevice()
-	local zoom = hs.application'Zoom'
-	if mic:muted() then
-		mic:setMuted(false)
-		if zoom then
-			local ok = zoom:selectMenuItem'Unmute Audio'
-			if not ok then
-				hs.timer.doAfter(0.5, function()
-					zoom:selectMenuItem'Unmute Audio'
-				end)
-			end
-		end
-	else
-		mic:setMuted(true)
-		if zoom then
-			local ok = zoom:selectMenuItem'Mute Audio'
-			if not ok then
-				hs.timer.doAfter(0.5, function()
-					zoom:selectMenuItem'Mute Audio'
-				end)
-			end
-		end
-	end
-	obj:updateMicMute(-1)
+  local mic = hs.audiodevice.defaultInputDevice()
+  local zoom = hs.application'Zoom'
+  local chrome = hs.application'Chrome'
+  if mic:muted() then
+    mic:setMuted(false)
+    if zoom then
+      local ok = zoom:selectMenuItem'Unmute Audio'
+      if not ok then
+        hs.timer.doAfter(0.5, function()
+          zoom:selectMenuItem'Unmute Audio'
+        end)
+      end
+    elseif chrome and string.match(chrome:mainWindow():title(), "Meet - ") then
+      muteMeet()
+    end
+  else
+    mic:setMuted(true)
+    if zoom then
+      local ok = zoom:selectMenuItem'Mute Audio'
+      if not ok then
+        hs.timer.doAfter(0.5, function()
+          zoom:selectMenuItem'Mute Audio'
+        end)
+      end
+    elseif chrome and string.match(chrome:mainWindow():title(), "Meet - ") then
+      muteMeet()
+    end
+
+  end
+  updateMicMute(-1)
 end
 
 --- MicMute:bindHotkeys(mapping, latch_timeout)
@@ -89,6 +96,9 @@ function obj:bindHotkeys(mapping, latch_timeout)
 	return self
 end
 
+function muteMeet()
+  hs.osascript.applescriptFromFile("/Users/gary/code/dotfiles/home/hammerspoon/MuteMeet.scpt")
+end
 
 function obj:init()
 	obj.time_since_mute = 0
