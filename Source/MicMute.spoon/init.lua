@@ -15,7 +15,7 @@ obj.author = "dctucker <dctucker@github.com> (modified by Gary Holtz)"
 obj.homepage = "https://dctucker.com"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 
-function updateMicMute(muted)
+function obj:updateMicMute(muted)
   if muted == -1 then
     muted = hs.audiodevice.defaultInputDevice():muted()
   end
