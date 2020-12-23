@@ -44,7 +44,7 @@ function obj:toggleMicMute()
         end)
       end
     elseif chrome and string.match(chrome:mainWindow():title(), "Meet - ") then
-      muteMeet()
+      obj:muteMeet()
     end
   else
     mic:setMuted(true)
@@ -56,7 +56,7 @@ function obj:toggleMicMute()
         end)
       end
     elseif chrome and string.match(chrome:mainWindow():title(), "Meet - ") then
-      muteMeet()
+      obj:muteMeet()
     end
 
   end
@@ -96,7 +96,7 @@ function obj:bindHotkeys(mapping, latch_timeout)
 	return self
 end
 
-function muteMeet()
+function obj:muteMeet()
   hs.osascript.applescriptFromFile("/Users/gary/code/dotfiles/home/hammerspoon/MuteMeet.scpt")
 end
 
