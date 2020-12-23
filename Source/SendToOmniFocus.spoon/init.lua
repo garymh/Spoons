@@ -1,4 +1,5 @@
 --- === SendToOmniFocus ===
+--- Gary's Custom Version
 ---
 --- Handles "send current item to OmniFocus" for multiple applications
 ---
@@ -110,9 +111,16 @@ obj.actions = {
       apptype = "chromeapp",
       itemname = "tab"
    },
+   Vivaldi = {
+     apptype = "chromeapp",
+     itemname = "tab"
+  },
    Mail = {
-      as_scriptfile = _resource_path("scripts/mail-to-omnifocus.applescript"),
+      as_scriptfile = _resource_path("scripts/mail-to-omnifocus.scpt"),
       itemname = "message"
+   },
+   Safari = {
+     as_scriptfile = _resource_path("scripts/safari-to-omnifocus.scpt")
    }
 }
 
