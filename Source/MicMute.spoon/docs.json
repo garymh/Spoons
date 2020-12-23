@@ -32,8 +32,8 @@
       }
     ],
     "Variable": [],
-    "desc": "Microphone Mute Toggle and status indicator",
-    "doc": "Microphone Mute Toggle and status indicator\n\nDownload: [https://github.com/dctucker/Spoons/raw/master/Spoons/MicMute.spoon.zip](https://github.com/dctucker/Spoons/raw/master/Spoons/MicMute.spoon.zip)",
+    "desc": "",
+    "doc": "\nMicrophone Mute Toggle and status indicator\n\nDownload: [https://github.com/dctucker/Spoons/raw/master/Spoons/MicMute.spoon.zip](https://github.com/dctucker/Spoons/raw/master/Spoons/MicMute.spoon.zip)",
     "items": [
       {
         "def": "MicMute:bindHotkeys(mapping, latch_timeout)",
@@ -60,7 +60,7 @@
       }
     ],
     "name": "MicMute",
-    "stripped_doc": "\nDownload: [https://github.com/dctucker/Spoons/raw/master/Spoons/MicMute.spoon.zip](https://github.com/dctucker/Spoons/raw/master/Spoons/MicMute.spoon.zip)",
+    "stripped_doc": "Microphone Mute Toggle and status indicator\n\nDownload: [https://github.com/dctucker/Spoons/raw/master/Spoons/MicMute.spoon.zip](https://github.com/dctucker/Spoons/raw/master/Spoons/MicMute.spoon.zip)",
     "submodules": [],
     "type": "Module"
   }
