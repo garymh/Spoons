@@ -1412,7 +1412,7 @@
     "type": "Method"
   },
   {
-    "desc": "Microphone Mute Toggle and status indicator",
+    "desc": "",
     "name": "MicMute",
     "type": "Module"
   },
@@ -2157,7 +2157,7 @@
     "type": "Variable"
   },
   {
-    "desc": "Handles \"send current item to OmniFocus\" for multiple applications",
+    "desc": "",
     "name": "SendToOmniFocus",
     "type": "Module"
   },
