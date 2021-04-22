@@ -19,7 +19,7 @@ function obj:updateMicMute(muted)
   if muted then
     obj.mute_menu:setTitle("📵Muted")
   else
-    obj.mute_menu:setTitle("")
+    obj.mute_menu:setTitle("🎙")
   end
 end
 
